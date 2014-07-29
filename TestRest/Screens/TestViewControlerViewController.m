@@ -9,12 +9,21 @@
 #import "TestViewControlerViewController.h"
 #import "RestKitManager.h"
 #import "UserRequest.h"
+#import "GPSManager.h"
 
 @interface TestViewControlerViewController ()
+
+@property(nonatomic, retain) GPSManager *gpsManager;
 
 @end
 
 @implementation TestViewControlerViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+
+  [GPSManager startUpdatingLocation];
+}
 
 - (IBAction)onClickList:(id)sender {
   [RestKitManager ticketList];

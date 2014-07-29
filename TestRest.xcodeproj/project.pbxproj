@@ -25,6 +25,8 @@
 		AD19E184197B8F2100392655 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD19E183197B8F2100392655 /* CFNetwork.framework */; };
 		AD19E186197B955B00392655 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD19E185197B955B00392655 /* SystemConfiguration.framework */; };
 		ADA9AC0F1984EE4E0028CFA2 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA9AC0E1984EE4E0028CFA2 /* Location.m */; };
+		ADA9BB8E1987D7E5006AE0A6 /* TUUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA9BB8D1987D7E5006AE0A6 /* TUUserDefaults.m */; };
+		ADA9BB971987DB80006AE0A6 /* TUUserDefaults+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA9BB961987DB80006AE0A6 /* TUUserDefaults+Properties.m */; };
 		ADAAB7E11983E4E8006E9D9E /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAB7E01983E4E8006E9D9E /* UserRequest.m */; };
 		ADAAB7E41983EB7B006E9D9E /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAB7E31983EB7B006E9D9E /* Response.m */; };
 		ADAAB7E91983EBE2006E9D9E /* RestKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAB7E81983EBE2006E9D9E /* RestKitManager.m */; };
@@ -69,6 +71,10 @@
 		AD19E185197B955B00392655 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		ADA9AC0D1984EE4E0028CFA2 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		ADA9AC0E1984EE4E0028CFA2 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		ADA9BB8C1987D7E5006AE0A6 /* TUUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUUserDefaults.h; sourceTree = "<group>"; };
+		ADA9BB8D1987D7E5006AE0A6 /* TUUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUUserDefaults.m; sourceTree = "<group>"; };
+		ADA9BB951987DB80006AE0A6 /* TUUserDefaults+Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TUUserDefaults+Properties.h"; sourceTree = "<group>"; };
+		ADA9BB961987DB80006AE0A6 /* TUUserDefaults+Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TUUserDefaults+Properties.m"; sourceTree = "<group>"; };
 		ADAAB7DF1983E4E8006E9D9E /* UserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
 		ADAAB7E01983E4E8006E9D9E /* UserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequest.m; sourceTree = "<group>"; };
 		ADAAB7E21983EB7B006E9D9E /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
@@ -149,6 +155,9 @@
 		AD19DFF9197B7E1E00392655 /* TestRest */ = {
 			isa = PBXGroup;
 			children = (
+				ADA9BB941987DB6B006AE0A6 /* Category */,
+				ADA9BB8F1987DA10006AE0A6 /* Global */,
+				ADA9BB8B1987D7AF006AE0A6 /* Extend */,
 				ADAAB7EA1983F307006E9D9E /* Screens */,
 				ADAAB7E61983EBCB006E9D9E /* Manager */,
 				ADAAB7DE1983E4D7006E9D9E /* Model */,
@@ -187,6 +196,31 @@
 				AD19E015197B7E1E00392655 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ADA9BB8B1987D7AF006AE0A6 /* Extend */ = {
+			isa = PBXGroup;
+			children = (
+				ADA9BB8C1987D7E5006AE0A6 /* TUUserDefaults.h */,
+				ADA9BB8D1987D7E5006AE0A6 /* TUUserDefaults.m */,
+			);
+			path = Extend;
+			sourceTree = "<group>";
+		};
+		ADA9BB8F1987DA10006AE0A6 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		ADA9BB941987DB6B006AE0A6 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				ADA9BB951987DB80006AE0A6 /* TUUserDefaults+Properties.h */,
+				ADA9BB961987DB80006AE0A6 /* TUUserDefaults+Properties.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		ADAAB7DE1983E4D7006E9D9E /* Model */ = {
@@ -356,7 +390,9 @@
 			files = (
 				ADAAB7E91983EBE2006E9D9E /* RestKitManager.m in Sources */,
 				ADAAB7E11983E4E8006E9D9E /* UserRequest.m in Sources */,
+				ADA9BB971987DB80006AE0A6 /* TUUserDefaults+Properties.m in Sources */,
 				AD19E004197B7E1E00392655 /* AppDelegate.m in Sources */,
+				ADA9BB8E1987D7E5006AE0A6 /* TUUserDefaults.m in Sources */,
 				ADAAB7E41983EB7B006E9D9E /* Response.m in Sources */,
 				AD19E000197B7E1E00392655 /* main.m in Sources */,
 				ADAAB7EE1983F32E006E9D9E /* TestViewControlerViewController.m in Sources */,

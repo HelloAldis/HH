@@ -11,7 +11,6 @@
 
 @interface RestKitManager : NSObject
 
-+ (RestKitManager *)sharedInstance;
 + (void)ticketList;
 + (void)create:(UserRequest *)userRequest;
 

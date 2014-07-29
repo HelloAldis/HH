@@ -1,67 +1,61 @@
 //
 //  GPSManager.m
-//  TestRest
 //
 //  Created by KindAzrael on 14-7-20.
 //  Copyright (c) 2014年 KindAzrael. All rights reserved.
 //
 
 #import "GPSManager.h"
-//#import <MapKit/MapKit.h>
-#import <CoreLocation/CoreLocation.h>
-#import "Util.h"
+#import "TUUserDefaults+Properties.h"
 
 @implementation GPSManager
 
 - (id)init {
-  self = [super init];
-  if (self) {
-    self.locationMgr = nil;
-    [self UpdateLocationLatLng];
+  if ((self = [super init]) != nil) {
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
   }
+
   return self;
 }
 
-- (void)UpdateLocationLatLng {
-  if (self.locationMgr == nil) {
-    self.locationMgr = [[CLLocationManager alloc] init];
-    self.locationMgr.delegate = self;
-    self.locationMgr.desiredAccuracy = kCLLocationAccuracyBest;
-  }
-
-  [self.locationMgr startUpdatingLocation];
++ (GPSManager *)sharedInstance {
+  static GPSManager *gpsManager;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{ gpsManager = [[GPSManager alloc] init]; });
+  return gpsManager;
 }
 
-- (void)locationAddressWithCLLocation:(CLLocation *)locationGps {
-  if (self.clGeocoder == nil) {
-    self.clGeocoder = [[CLGeocoder alloc] init];
-  }
-
-  [self.clGeocoder reverseGeocodeLocation:locationGps
-                        completionHandler:^(NSArray *placemarks, NSError *error) {
-                            MKPlacemark *placemark = [placemarks objectAtIndex:0];
-                            NSLog(@"%@", placemark);
-                        }];
++ (void)startUpdatingLocation {
+  [[GPSManager sharedInstance] startUpdatingLocation];
 }
 
-#pragma mark - location Delegate
++ (double)lastestLongitude {
+  return [TUUserDefaults standardUserDefaults].lastestLongitude;
+}
+
++ (double)lastestLatitude {
+  return [TUUserDefaults standardUserDefaults].lastestLatitude;
+}
+
+- (void)startUpdatingLocation {
+  [self.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+  NSLog(@"longitude %f", [[locations lastObject] coordinate].longitude);
+  NSLog(@"latitude %f", [[locations lastObject] coordinate].latitude);
+
+  // Save to user default
+  [TUUserDefaults standardUserDefaults].lastestLongitude = [[locations lastObject] coordinate].longitude;
+  [TUUserDefaults standardUserDefaults].lastestLatitude = [[locations lastObject] coordinate].latitude;
+
+  [self.locationManager stopUpdatingLocation];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-  NSLog(@"Location error!");
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation {
-  if (!newLocation) {
-    [self locationManager:manager didFailWithError:NULL];
-    return;
-  }
-
-  [manager stopUpdatingLocation];
-
-  NSLog(@"current location: %f, %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-
-  [self locationAddressWithCLLocation:newLocation];
+  NSLog(@"error: %@", [error localizedDescription]);
 }
 
 @end
