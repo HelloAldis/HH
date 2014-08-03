@@ -9,18 +9,28 @@
 #import "AppDelegate.h"
 #import "GPSManager.h"
 #import "TestViewControlerViewController.h"
+#import <CocoaLumberjack/DDTTYLogger.h>
+#import "MainViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  // Override point for customization after application launch.
-  self.window.backgroundColor = [UIColor whiteColor];
-  self.navigationViewController =
-      [[UINavigationController alloc] initWithRootViewController:[[TestViewControlerViewController alloc] init]];
-  self.window.rootViewController = self.navigationViewController;
-  [self.window makeKeyAndVisible];
+  DDTTYLogger *ttyLogger = [DDTTYLogger sharedInstance];
+  [ttyLogger setLogFormatter:nil];
+  [DDLog addLogger:ttyLogger];
+  [GPSManager startUpdatingLocation];
+
+  [self initUI];
   return YES;
+}
+
+- (void)initUI {
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  self.window.backgroundColor = [UIColor whiteColor];
+  self.mainViewController = [[MainViewController alloc] init];
+
+  self.window.rootViewController = self.mainViewController;
+  [self.window makeKeyAndVisible];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

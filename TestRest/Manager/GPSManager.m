@@ -44,8 +44,8 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-  NSLog(@"longitude %f", [[locations lastObject] coordinate].longitude);
-  NSLog(@"latitude %f", [[locations lastObject] coordinate].latitude);
+  DDLogVerbose(@"longitude %f", [[locations lastObject] coordinate].longitude);
+  DDLogVerbose(@"latitude %f", [[locations lastObject] coordinate].latitude);
 
   // Save to user default
   [TUUserDefaults standardUserDefaults].lastestLongitude = [[locations lastObject] coordinate].longitude;
@@ -55,7 +55,7 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-  NSLog(@"error: %@", [error localizedDescription]);
+  DDLogError(@"error: %@", [error localizedDescription]);
 }
 
 @end

@@ -8,6 +8,10 @@
 
 #import "RestKitManager.h"
 #import "Response.h"
+#import "UserRequest.h"
+
+#define kCreatePath @"/ticket/create"
+#define kNearPath @"/ticket/near"
 
 @interface RestKitManager ()
 
@@ -32,38 +36,64 @@ static RestKitManager *instance;
 }
 
 - (id)init {
-  NSLog(@"RestKitManager init");
+  DDLogVerbose(@"RestKitManager init");
 
   if ((self = [super init]) != nil) {
-    RKObjectMapping *responseMapping = [RKObjectMapping mappingForClass:[Response class]];
-    [responseMapping addAttributeMappingsFromArray:@[ @"status" ]];
-    NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful); // Anything in 2xx
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping
-                                                                                            method:RKRequestMethodAny
-                                                                                       pathPattern:nil
-                                                                                           keyPath:nil
-                                                                                       statusCodes:statusCodes];
-
     _rkObjectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000"]];
-    [_rkObjectManager addResponseDescriptor:responseDescriptor];
-
-    RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
-    [requestMapping addAttributeMappingsFromDictionary:@{
-      @"phoneNumber" : @"phoneNumber",
-      @"location.type" : @"location.type",
-      @"location.coordinates" : @"location.coordinates",
-      @"description" : @"description",
-      @"privatePassword" : @"privatePassword",
-      @"title" : @"title"
-    }];
-    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping
-                                                                                   objectClass:[UserRequest class]
-                                                                                   rootKeyPath:@"userRequest"
-                                                                                        method:RKRequestMethodPOST];
-    [_rkObjectManager addRequestDescriptor:requestDescriptor];
+    [self initCreate];
+    [self initNear];
   }
 
   return self;
+}
+
+- (void)initCreate {
+  RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
+  [requestMapping addAttributeMappingsFromDictionary:@{
+    @"phoneNumber" : @"phoneNumber",
+    @"location.type" : @"location.type",
+    @"location.coordinates" : @"location.coordinates",
+    @"description" : @"description",
+    @"privatePassword" : @"privatePassword",
+    @"title" : @"title"
+  }];
+  RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping
+                                                                                 objectClass:[UserRequest class]
+                                                                                 rootKeyPath:@"userRequest"
+                                                                                      method:RKRequestMethodPOST];
+  [_rkObjectManager addRequestDescriptor:requestDescriptor];
+
+  RKObjectMapping *responseMapping = [RKObjectMapping mappingForClass:[Response class]];
+  [responseMapping addAttributeMappingsFromArray:@[ @"status", @"message" ]];
+  NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful); // Anything in 2xx
+  RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping
+                                                                                          method:RKRequestMethodAny
+                                                                                     pathPattern:kCreatePath
+                                                                                         keyPath:nil
+                                                                                     statusCodes:statusCodes];
+  [_rkObjectManager addResponseDescriptor:responseDescriptor];
+}
+
+- (void)initNear {
+  RKObjectMapping *nearResponseMapping = [RKObjectMapping mappingForClass:[UserRequest class]];
+  [nearResponseMapping addAttributeMappingsFromDictionary:@{
+    @"_id" : @"_id",
+    @"phoneNumber" : @"phoneNumber",
+    @"location.type" : @"location.type",
+    @"location.coordinates" : @"location.coordinates",
+    @"description" : @"description",
+    @"privatePassword" : @"privatePassword",
+    @"title" : @"title",
+    @"status" : @"status",
+    @"date" : @"date"
+  }];
+  RKResponseDescriptor *nearResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:nearResponseMapping
+                                                                                              method:RKRequestMethodAny
+                                                                                         pathPattern:kNearPath
+                                                                                             keyPath:@"obj"
+                                                                                         statusCodes:nil];
+
+  [_rkObjectManager addResponseDescriptor:nearResponseDescriptor];
 }
 
 + (void)ticketList {
@@ -75,33 +105,67 @@ static RestKitManager *instance;
       path:@"/ticket/list"
       parameters:nil
       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-          NSLog(@"%@", [mappingResult dictionary]);
-          NSLog(@"%@", [mappingResult firstObject]);
-          NSLog(@"%@", [mappingResult array]);
-          NSLog(@"%@", [mappingResult description]);
+          DDLogVerbose(@"%@", [mappingResult dictionary]);
+          DDLogVerbose(@"%@", [mappingResult firstObject]);
+          DDLogVerbose(@"%@", [mappingResult array]);
+          DDLogVerbose(@"%@", [mappingResult description]);
           Response *r = [mappingResult firstObject];
-          NSLog(@"%@", [r status]);
+          DDLogVerbose(@"%@", [r status]);
       }
-      failure:^(RKObjectRequestOperation *operation, NSError *error) { NSLog(@"%@", error); }];
+      failure:^(RKObjectRequestOperation *operation, NSError *error) { DDLogError(@"%@", error); }];
 }
 
-+ (void)create:(UserRequest *)userRequest {
-  [instance create:userRequest];
++ (void)create:(UserRequest *)userRequest
+       success:(void (^)(Response *response))success
+       failure:(void (^)(Response *response))failure {
+  [instance create:userRequest success:success failure:failure];
 }
 
-- (void)create:(UserRequest *)userRequest {
+- (void)create:(UserRequest *)userRequest
+       success:(void (^)(Response *response))success
+       failure:(void (^)(Response *response))failure {
   [self.rkObjectManager postObject:userRequest
-      path:@"/ticket/create"
+      path:kCreatePath
       parameters:nil
       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-          NSLog(@"%@", [mappingResult dictionary]);
-          NSLog(@"%@", [mappingResult firstObject]);
-          NSLog(@"%@", [mappingResult array]);
-          NSLog(@"%@", [mappingResult description]);
+          DDLogVerbose(@"%@", [mappingResult dictionary]);
+          DDLogVerbose(@"%@", [mappingResult firstObject]);
+          DDLogVerbose(@"%@", [mappingResult array]);
+          DDLogVerbose(@"%@", [mappingResult description]);
           Response *r = [mappingResult firstObject];
-          NSLog(@"%@", [r status]);
+          DDLogVerbose(@"%@", [r status]);
+          success(r);
       }
-      failure:^(RKObjectRequestOperation *operation, NSError *error) { NSLog(@"%@", error); }];
+      failure:^(RKObjectRequestOperation *operation, NSError *error) { DDLogError(@"%@", error); }];
+}
+
++ (void)near:(double)longitude
+    latitude:(double)latitude
+     success:(void (^)(NSArray *array))success
+     failure:(void (^)(NSError *error))failure {
+  [instance near:longitude latitude:latitude success:success failure:failure];
+}
+
+- (void)near:(double)longitude
+    latitude:(double)latitude
+     success:(void (^)(NSArray *array))success
+     failure:(void (^)(NSError *error))failure {
+  NSString *longStr = [NSString stringWithFormat:@"%f", longitude];
+  NSString *latStr = [NSString stringWithFormat:@"%f", latitude];
+
+  [self.rkObjectManager getObjectsAtPath:kNearPath
+      parameters:@{
+        @"long" : longStr,
+        @"lat" : latStr
+      }
+      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+          DDLogVerbose(@"%@", [mappingResult dictionary]);
+          DDLogVerbose(@"%@", [mappingResult firstObject]);
+          DDLogVerbose(@"%@", [mappingResult array]);
+          DDLogVerbose(@"%@", [mappingResult description]);
+          success([mappingResult array]);
+      }
+      failure:^(RKObjectRequestOperation *operation, NSError *error) { DDLogError(@"%@", error); }];
 }
 
 @end

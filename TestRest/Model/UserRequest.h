@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Location.h"
+
+@class Location;
 
 @interface UserRequest : NSObject
 
+@property(nonatomic, retain) NSString *_id;
 @property(nonatomic, retain) NSString *phoneNumber;
 @property(nonatomic, retain) NSString *title;
 @property(nonatomic, retain) Location *location;

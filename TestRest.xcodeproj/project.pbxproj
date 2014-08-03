@@ -24,14 +24,25 @@
 		AD19E182197B8E4A00392655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD19E181197B8E4A00392655 /* CoreData.framework */; };
 		AD19E184197B8F2100392655 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD19E183197B8F2100392655 /* CFNetwork.framework */; };
 		AD19E186197B955B00392655 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD19E185197B955B00392655 /* SystemConfiguration.framework */; };
+		ADA2BB32198D11AA00D3E7CC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA2BB30198D11AA00D3E7CC /* MainViewController.m */; };
+		ADA2BB33198D11AA00D3E7CC /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA2BB31198D11AA00D3E7CC /* MainViewController.xib */; };
+		ADA2F829198E066D00685C0A /* NearResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA2F828198E066D00685C0A /* NearResponse.m */; };
 		ADA9AC0F1984EE4E0028CFA2 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA9AC0E1984EE4E0028CFA2 /* Location.m */; };
 		ADA9BB8E1987D7E5006AE0A6 /* TUUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA9BB8D1987D7E5006AE0A6 /* TUUserDefaults.m */; };
 		ADA9BB971987DB80006AE0A6 /* TUUserDefaults+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA9BB961987DB80006AE0A6 /* TUUserDefaults+Properties.m */; };
+		ADAA203F198BC0E600AA7175 /* UserRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAA203E198BC0E600AA7175 /* UserRequestViewController.xib */; };
+		ADAA2043198BC1C200AA7175 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAA2041198BC1C200AA7175 /* DiscoverViewController.m */; };
+		ADAA2044198BC1C200AA7175 /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAA2042198BC1C200AA7175 /* DiscoverViewController.xib */; };
+		ADAA2048198BCBA800AA7175 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAA2047198BCBA800AA7175 /* BaseViewController.m */; };
+		ADAA204D198BD56F00AA7175 /* UserRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAA204B198BD56F00AA7175 /* UserRequestTableViewCell.m */; };
+		ADAA204E198BD56F00AA7175 /* UserRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAA204C198BD56F00AA7175 /* UserRequestTableViewCell.xib */; };
+		ADAA2050198BD67100AA7175 /* 个人.png in Resources */ = {isa = PBXBuildFile; fileRef = ADAA204F198BD67100AA7175 /* 个人.png */; };
 		ADAAB7E11983E4E8006E9D9E /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAB7E01983E4E8006E9D9E /* UserRequest.m */; };
 		ADAAB7E41983EB7B006E9D9E /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAB7E31983EB7B006E9D9E /* Response.m */; };
 		ADAAB7E91983EBE2006E9D9E /* RestKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAB7E81983EBE2006E9D9E /* RestKitManager.m */; };
 		ADAAB7EE1983F32E006E9D9E /* TestViewControlerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAB7EC1983F32E006E9D9E /* TestViewControlerViewController.m */; };
 		ADAAB7EF1983F32E006E9D9E /* TestViewControlerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAAB7ED1983F32E006E9D9E /* TestViewControlerViewController.xib */; };
+		ADAB633B198A73E80011B78F /* UserRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAB6339198A73E80011B78F /* UserRequestViewController.m */; };
 		F421F69165E94E08AF486A0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F73ED0A493434FDA94F48BCD /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -69,12 +80,27 @@
 		AD19E181197B8E4A00392655 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AD19E183197B8F2100392655 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		AD19E185197B955B00392655 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		ADA2BB2F198D11AA00D3E7CC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		ADA2BB30198D11AA00D3E7CC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		ADA2BB31198D11AA00D3E7CC /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		ADA2F827198E066D00685C0A /* NearResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearResponse.h; sourceTree = "<group>"; };
+		ADA2F828198E066D00685C0A /* NearResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearResponse.m; sourceTree = "<group>"; };
 		ADA9AC0D1984EE4E0028CFA2 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		ADA9AC0E1984EE4E0028CFA2 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		ADA9BB8C1987D7E5006AE0A6 /* TUUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUUserDefaults.h; sourceTree = "<group>"; };
 		ADA9BB8D1987D7E5006AE0A6 /* TUUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUUserDefaults.m; sourceTree = "<group>"; };
 		ADA9BB951987DB80006AE0A6 /* TUUserDefaults+Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TUUserDefaults+Properties.h"; sourceTree = "<group>"; };
 		ADA9BB961987DB80006AE0A6 /* TUUserDefaults+Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TUUserDefaults+Properties.m"; sourceTree = "<group>"; };
+		ADAA203E198BC0E600AA7175 /* UserRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserRequestViewController.xib; sourceTree = "<group>"; };
+		ADAA2040198BC1C200AA7175 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		ADAA2041198BC1C200AA7175 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		ADAA2042198BC1C200AA7175 /* DiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
+		ADAA2046198BCBA800AA7175 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		ADAA2047198BCBA800AA7175 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		ADAA204A198BD56F00AA7175 /* UserRequestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequestTableViewCell.h; sourceTree = "<group>"; };
+		ADAA204B198BD56F00AA7175 /* UserRequestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequestTableViewCell.m; sourceTree = "<group>"; };
+		ADAA204C198BD56F00AA7175 /* UserRequestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserRequestTableViewCell.xib; sourceTree = "<group>"; };
+		ADAA204F198BD67100AA7175 /* 个人.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "个人.png"; sourceTree = "<group>"; };
 		ADAAB7DF1983E4E8006E9D9E /* UserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
 		ADAAB7E01983E4E8006E9D9E /* UserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequest.m; sourceTree = "<group>"; };
 		ADAAB7E21983EB7B006E9D9E /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
@@ -84,6 +110,8 @@
 		ADAAB7EB1983F32E006E9D9E /* TestViewControlerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewControlerViewController.h; sourceTree = "<group>"; };
 		ADAAB7EC1983F32E006E9D9E /* TestViewControlerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewControlerViewController.m; sourceTree = "<group>"; };
 		ADAAB7ED1983F32E006E9D9E /* TestViewControlerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewControlerViewController.xib; sourceTree = "<group>"; };
+		ADAB6338198A73E80011B78F /* UserRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequestViewController.h; sourceTree = "<group>"; };
+		ADAB6339198A73E80011B78F /* UserRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequestViewController.m; sourceTree = "<group>"; };
 		F73ED0A493434FDA94F48BCD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -155,6 +183,7 @@
 		AD19DFF9197B7E1E00392655 /* TestRest */ = {
 			isa = PBXGroup;
 			children = (
+				ADAA2049198BCF1700AA7175 /* Images */,
 				ADA9BB941987DB6B006AE0A6 /* Category */,
 				ADA9BB8F1987DA10006AE0A6 /* Global */,
 				ADA9BB8B1987D7AF006AE0A6 /* Extend */,
@@ -223,6 +252,23 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		ADAA2045198BCB9400AA7175 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ADAA2046198BCBA800AA7175 /* BaseViewController.h */,
+				ADAA2047198BCBA800AA7175 /* BaseViewController.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ADAA2049198BCF1700AA7175 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				ADAA204F198BD67100AA7175 /* 个人.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		ADAAB7DE1983E4D7006E9D9E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +278,8 @@
 				ADAAB7E31983EB7B006E9D9E /* Response.m */,
 				ADA9AC0D1984EE4E0028CFA2 /* Location.h */,
 				ADA9AC0E1984EE4E0028CFA2 /* Location.m */,
+				ADA2F827198E066D00685C0A /* NearResponse.h */,
+				ADA2F828198E066D00685C0A /* NearResponse.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,9 +298,22 @@
 		ADAAB7EA1983F307006E9D9E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				ADAA2045198BCB9400AA7175 /* Common */,
 				ADAAB7EB1983F32E006E9D9E /* TestViewControlerViewController.h */,
 				ADAAB7EC1983F32E006E9D9E /* TestViewControlerViewController.m */,
 				ADAAB7ED1983F32E006E9D9E /* TestViewControlerViewController.xib */,
+				ADAB6338198A73E80011B78F /* UserRequestViewController.h */,
+				ADAB6339198A73E80011B78F /* UserRequestViewController.m */,
+				ADAA203E198BC0E600AA7175 /* UserRequestViewController.xib */,
+				ADAA2040198BC1C200AA7175 /* DiscoverViewController.h */,
+				ADAA2041198BC1C200AA7175 /* DiscoverViewController.m */,
+				ADAA2042198BC1C200AA7175 /* DiscoverViewController.xib */,
+				ADAA204A198BD56F00AA7175 /* UserRequestTableViewCell.h */,
+				ADAA204B198BD56F00AA7175 /* UserRequestTableViewCell.m */,
+				ADAA204C198BD56F00AA7175 /* UserRequestTableViewCell.xib */,
+				ADA2BB2F198D11AA00D3E7CC /* MainViewController.h */,
+				ADA2BB30198D11AA00D3E7CC /* MainViewController.m */,
+				ADA2BB31198D11AA00D3E7CC /* MainViewController.xib */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -334,9 +395,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADAA204E198BD56F00AA7175 /* UserRequestTableViewCell.xib in Resources */,
 				ADAAB7EF1983F32E006E9D9E /* TestViewControlerViewController.xib in Resources */,
+				ADAA203F198BC0E600AA7175 /* UserRequestViewController.xib in Resources */,
+				ADA2BB33198D11AA00D3E7CC /* MainViewController.xib in Resources */,
 				AD19DFFE197B7E1E00392655 /* InfoPlist.strings in Resources */,
+				ADAA2050198BD67100AA7175 /* 个人.png in Resources */,
 				AD19E006197B7E1E00392655 /* Images.xcassets in Resources */,
+				ADAA2044198BC1C200AA7175 /* DiscoverViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +454,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADAA204D198BD56F00AA7175 /* UserRequestTableViewCell.m in Sources */,
 				ADAAB7E91983EBE2006E9D9E /* RestKitManager.m in Sources */,
+				ADAA2043198BC1C200AA7175 /* DiscoverViewController.m in Sources */,
 				ADAAB7E11983E4E8006E9D9E /* UserRequest.m in Sources */,
 				ADA9BB971987DB80006AE0A6 /* TUUserDefaults+Properties.m in Sources */,
 				AD19E004197B7E1E00392655 /* AppDelegate.m in Sources */,
@@ -396,7 +464,11 @@
 				ADAAB7E41983EB7B006E9D9E /* Response.m in Sources */,
 				AD19E000197B7E1E00392655 /* main.m in Sources */,
 				ADAAB7EE1983F32E006E9D9E /* TestViewControlerViewController.m in Sources */,
+				ADAA2048198BCBA800AA7175 /* BaseViewController.m in Sources */,
 				ADA9AC0F1984EE4E0028CFA2 /* Location.m in Sources */,
+				ADAB633B198A73E80011B78F /* UserRequestViewController.m in Sources */,
+				ADA2BB32198D11AA00D3E7CC /* MainViewController.m in Sources */,
+				ADA2F829198E066D00685C0A /* NearResponse.m in Sources */,
 				AD19E024197B7F2300392655 /* GPSManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

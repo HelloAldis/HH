@@ -15,3 +15,6 @@
   #import <Foundation/Foundation.h>
   #import <RestKit/RestKit.h>
 #endif
+
+#import <CocoaLumberjack/DDLog.h>
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;

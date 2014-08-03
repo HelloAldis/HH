@@ -11,5 +11,6 @@
 @interface Response : NSObject
 
 @property(nonatomic, retain) NSString *status;
+@property(nonatomic, retain) NSString *message;
 
 @end

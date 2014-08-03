@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class MainViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property(strong, nonatomic) UIWindow *window;
-@property(nonatomic, retain) UINavigationController *navigationViewController;
+@property(nonatomic, retain) MainViewController *mainViewController;
 
 @end

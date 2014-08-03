@@ -10,10 +10,11 @@
 
 @implementation Location
 
-- (id)initWithX:(double)x andY:(double)y {
+- (id)initWithLongitude:(double)longitude andLatitude:(double)latitude {
   if ((self = [super init]) != nil) {
     _type = @"Point";
-    _coordinates = [NSArray arrayWithObjects:[NSNumber numberWithDouble:x], [NSNumber numberWithDouble:y], nil];
+    _coordinates =
+        [NSArray arrayWithObjects:[NSNumber numberWithDouble:longitude], [NSNumber numberWithDouble:latitude], nil];
   }
 
   return self;

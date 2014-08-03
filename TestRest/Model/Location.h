@@ -13,6 +13,6 @@
 @property(nonatomic, retain) NSString *type;
 @property(nonatomic, retain) NSArray *coordinates;
 
-- (id)initWithX:(double)x andY:(double)y;
+- (id)initWithLongitude:(double)longitude andLatitude:(double)latitude;
 
 @end

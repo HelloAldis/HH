@@ -7,11 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UserRequest.h"
+
+@class UserRequest;
+@class Response;
 
 @interface RestKitManager : NSObject
 
 + (void)ticketList;
-+ (void)create:(UserRequest *)userRequest;
++ (void)create:(UserRequest *)userRequest
+       success:(void (^)(Response *response))success
+       failure:(void (^)(Response *response))failure;
++ (void)near:(double)longitude
+    latitude:(double)latitude
+     success:(void (^)(NSArray *array))success
+     failure:(void (^)(NSError *error))failure;
 
 @end
