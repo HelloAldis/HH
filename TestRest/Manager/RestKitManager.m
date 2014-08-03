@@ -9,6 +9,7 @@
 #import "RestKitManager.h"
 #import "Response.h"
 #import "UserRequest.h"
+#import "NearResponse.h"
 
 #define kCreatePath @"/ticket/create"
 #define kNearPath @"/ticket/near"
@@ -87,6 +88,16 @@ static RestKitManager *instance;
     @"status" : @"status",
     @"date" : @"date"
   }];
+
+  RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[NearResponse class]];
+  [mapping addAttributeMappingsFromDictionary:@{ @"dis" : @"dis", @"obj" : @"userRequest" }];
+
+  RKResponseDescriptor *descriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
+                                                                                  method:RKRequestMethodAny
+                                                                             pathPattern:kNearPath
+                                                                                 keyPath:nil
+                                                                             statusCodes:nil];
+
   RKResponseDescriptor *nearResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:nearResponseMapping
                                                                                               method:RKRequestMethodAny
                                                                                          pathPattern:kNearPath
@@ -94,6 +105,7 @@ static RestKitManager *instance;
                                                                                          statusCodes:nil];
 
   [_rkObjectManager addResponseDescriptor:nearResponseDescriptor];
+//  [_rkObjectManager addResponseDescriptor:descriptor];
 }
 
 + (void)ticketList {
