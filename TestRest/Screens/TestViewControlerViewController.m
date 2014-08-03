@@ -35,7 +35,7 @@
 
   userRequest.phoneNumber = @"15827239028";
   userRequest.title = @"求购PS4";
-  userRequest.description = @"高价求购PS4";
+  userRequest.description = @"高价求购PS4。。。";
   userRequest.location = [[Location alloc] initWithLongitude:113.41 andLatitude:29.58];
   userRequest.privatePassword = @"123456";
 
