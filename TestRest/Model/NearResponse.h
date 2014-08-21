@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BMapKit.h"
 
 @class UserRequest;
 
-@interface NearResponse : NSObject
+@interface NearResponse : NSObject <BMKAnnotation>
 
-@property(nonatomic, strong) NSString *dis;
-@property(nonatomic, strong) UserRequest *userRequest;
+@property(nonatomic, assign) float dis;
+@property(nonatomic, strong) UserRequest *obj;
 
 @end

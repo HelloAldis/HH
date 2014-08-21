@@ -7,6 +7,7 @@
 //
 
 #import "TUUserDefaults.h"
+#import "BMapKit.h"
 
 @interface TUUserDefaults (Properties)
 

@@ -7,6 +7,13 @@
 
 #import "GPSManager.h"
 #import "TUUserDefaults+Properties.h"
+#import "BMapKit.h"
+
+@interface GPSManager ()
+
+@property(nonatomic, strong) BMKLocationService *bmkLocationService;
+
+@end
 
 @implementation GPSManager
 
@@ -15,6 +22,9 @@
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+
+    _bmkLocationService = [[BMKLocationService alloc] init];
+    _bmkLocationService.delegate = self;
   }
 
   return self;
@@ -40,12 +50,13 @@
 }
 
 - (void)startUpdatingLocation {
-  [self.locationManager startUpdatingLocation];
+  //  [self.locationManager startUpdatingLocation];
+  [self.bmkLocationService startUserLocationService];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-  DDLogVerbose(@"longitude %f", [[locations lastObject] coordinate].longitude);
-  DDLogVerbose(@"latitude %f", [[locations lastObject] coordinate].latitude);
+  DDLogDebug(@"longitude %f", [[locations lastObject] coordinate].longitude);
+  DDLogDebug(@"latitude %f", [[locations lastObject] coordinate].latitude);
 
   // Save to user default
   [TUUserDefaults standardUserDefaults].lastestLongitude = [[locations lastObject] coordinate].longitude;
@@ -55,7 +66,26 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-  DDLogError(@"error: %@", [error localizedDescription]);
+  DDLogError(@"Apple location error: %@", [error localizedDescription]);
+}
+
+#pragma mark - BMK Location service delegate
+- (void)willStartLocatingUser {
+  DDLogDebug(@"start to locate user");
+}
+
+- (void)didUpdateUserLocation:(BMKUserLocation *)userLocation {
+  DDLogDebug(@"didUpdateUserLocation lat %f,long %f", userLocation.location.coordinate.latitude,
+             userLocation.location.coordinate.longitude);
+
+  [TUUserDefaults standardUserDefaults].lastestLongitude = userLocation.location.coordinate.longitude;
+  [TUUserDefaults standardUserDefaults].lastestLatitude = userLocation.location.coordinate.latitude;
+
+  [self.bmkLocationService stopUserLocationService];
+}
+
+- (void)didFailToLocateUserWithError:(NSError *)error {
+  DDLogError(@"Can not get location error: %@", [error localizedDescription]);
 }
 
 @end
